@@ -1,6 +1,7 @@
 const Discord = require("discord.js")
 const config = require("../botconfig.json");
 let xp = require("../data/xp.json");
+const fs = require("fs");
 
 module.exports = {
     name: 'fight',
@@ -82,7 +83,7 @@ module.exports = {
     }
   
     fs.writeFile("../data/xp.json", JSON.stringify(xp), (err) => {
-      if(err) cosole.log(err)
+      if(err) console.log(err)
     });
 	},
 };
