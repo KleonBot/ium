@@ -8,14 +8,17 @@ module.exports = {
     aliases: ['hb'],
     args: true,
 	execute(bot, message, args){
-    let haste = args.slice(0).join(" ")
-    let type = args.slice(1).join(" ")
-
-    if (!args[0]) { return message.channel.send("**You must paste some code to put in hastebin.** `ium hastebing <code>`") }
-
-    hastebin(haste).then(r => {
-         message.channel.send("Ive posted your code on hastebin! " + r);
-       }).catch(console.error);
-    message.delete();
+        const snekfetch = require('snekfetch');
+        if (!args.slice(0)
+            .join(' ')) return message.channel.send('Please, provide the text! Usage: hastebin <text>')
+            .then(msg => msg.delete({
+                timeout: 10000
+            }));
+        snekfetch.post('https://hastebin.com/documents')
+            .send(args.slice(0)
+                .join(' '))
+            .then(body => {
+                message.channel.send('Posted text to Hastebin\nURL: https://hastebin.com/' + body.body.key);
+            });
 	},
 };

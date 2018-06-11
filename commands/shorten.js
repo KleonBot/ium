@@ -1,7 +1,7 @@
 const shorten = require('isgd');
 
 module.exports = {
-    name: 'reload',
+    name: 'shorten',
     description: 'Shortens the URL that you provide.',
     usage: '<URL>',
     args: true,
