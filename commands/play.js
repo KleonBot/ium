@@ -146,7 +146,7 @@ module.exports = {
                 .on('error', error => console.error(error));
             dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
         
-            channelQueue.textChannel.send(`Now playing - **${song.title}**`)
+            channelQueue.textChannel.send(`Now playing - **${song.title}**\n`)
         }
         
             

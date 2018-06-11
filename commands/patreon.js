@@ -8,7 +8,7 @@ module.exports = {
 	async execute(bot, message, args){
         let botEmbed = new Discord.RichEmbed()
         .setColor('#000000')
-        .setDescription("ium's patreon: https://www.patreon.com/ium")
+        .setDescription("Donate: https://ium-bot.github.io/donate \nDonators: Cubic")
     
         message.channel.send(botEmbed);
 	},

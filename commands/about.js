@@ -16,7 +16,7 @@ module.exports = {
         .addField("Website", "https://ium-bot.github.io", inline)
         .addField("Invite", "https://ium-bot.github.io/invite", inline)
         .addField("Server", "https://discord.gg/Ac8HYtD", inline)
-        .addField("Patreon", "https://www.patreon.com/ium", inline)
+        .addField("Donate", "https://ium-bot.github.io/donate", inline)
         .addField("Links", "[Trello](https://trello.com/b/3kvrAbIV/ium) | [Github](https://github.com/tetra-dev/ium) | [Issues](https://github.com/tetra-dev/ium/issues)");
     
         message.channel.send(botEmbed);
