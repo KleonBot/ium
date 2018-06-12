@@ -4,23 +4,21 @@ const snekfetch = require('snekfetch');
 
 module.exports = {
     name: 'magik',
-    description: 'Adds magik to your image.',
-    usage: '<link or useravtar>',
-    args: true,
+    description: 'Displays an enlarged image of a user\'s avatar, with a direct link to it.',
     aliases: ['magic'],
-	async execute(bot, message, args){
-        let target = message.mentions.users.first() || message.author;
-        let wait = await message.channel.send('<a:loading:393852367751086090> Adding the magik...')
-    
-        let userAvatar = (target.displayAvatarURL);
-        if (['jpg', 'jpeg', 'gif', 'png', 'webp'].some(x => args.join(' ').includes(x))) {
-            userAvatar = args.join(' ').replace(/gif|webp/g, 'png')
-        }
-    
-        let res = await snekfetch.get(`https://discord.services/api/magik?url=${userAvatar}`)
-    
-        await wait.delete()
-    
-        return message.channel.send(`https://discord.services/api/magik?url=${userAvatar}`) 
-	},
+    usage: '<user>',
+    args: false,
+    async execute (bot, message, args) {
+        let msg = await message.channel.send(':loading: Generating avatar...');
+        let mentionedUser = message.mentions.users.first() || message.author;
+        let avatar = 'https://discord.services/api/magik?url=' + mentionedUser.displayAvatarURL;
+        let avatarEmbed = new Discord.RichEmbed()
+            .setImage(avatar)
+            .setColor('RANDOM')
+            .setTitle('Magik')
+            .setDescription('[Magik Link](' + avatar + ')');
+
+        message.channel.send(avatarEmbed);
+        msg.delete();
+    },
 };
