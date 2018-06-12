@@ -3,7 +3,7 @@ const errors = require("../utils/errors.js")
 const ms = require("ms");
 
 module.exports = {
-    name: 'magik',
+    name: 'mute',
     description: 'Mutes the user that you mention from your server if you have permission to mute them.',
     usage: '<user>',
     args: true,
