@@ -8,8 +8,8 @@ module.exports = {
     usage: '<user>',
     args: true,
 	async execute(bot, message, args){
-    if(tomute.hasPermission("MANAGE_MESSAGES")) return errors.noPerms(message, "mute");
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        if(tomute.hasPermission("MANAGE_MESSAGES")) return errors.noPerms(message, "mute");
     if(!tomute) return message.channel.send("**User not found.** `ium mute <user>`");
     let muterole = message.guild.roles.find(`name`, "muted");
     //start of create role
